@@ -5,29 +5,31 @@ import java.time.LocalDate;
 import java.time.Month;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
-@RestController
+@Controller
 @RequestMapping(path="/api/v1/client")
 public class ClientController {
+	
+	@GetMapping("/signup")
+	public String signup(Model model){
+		return "signup";
+	}
 
-	@GetMapping
-	public List<Client> getClient(){
-		return List.of(
-				new Client(1L,
-				            "Fadi",
-				            "ayadfadi@gmail.com",
-				            LocalDate.of(2002, Month.OCTOBER, 11),
-				            20
-				),
-				new Client(2L,
-				            "Anis",
-				            "gasmianis@gmail.com",
-				            LocalDate.of(2002, Month.JANUARY, 5),
-				            20
-				)
-			);
+	@PostMapping("/submit")
+	public String formSubmit(@ModelAttribute("formData")Client client, Model model){
+		model.addAttribute("client", client);
+		return "result";
+	}
+
+	@GetMapping("/result")
+	public String success(Model model){
+		return "result";
 	}
 	
 }
