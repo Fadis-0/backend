@@ -1,3 +1,4 @@
-com/backend/server/client/Client.class
+com/backend/server/entities/ClientController.class
+com/backend/server/entities/ClientRepository.class
 com/backend/server/ServerApplication.class
-com/backend/server/client/ClientController.class
+com/backend/server/entities/Client.class
