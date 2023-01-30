@@ -1,4 +1,6 @@
-package com.backend.server.entities;
+package com.backend.server.controllers;
+
+import com.backend.server.services.ClientService;
 
 import java.util.List;
 import java.time.LocalDate;
@@ -15,29 +17,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 @Controller
-@RequestMapping(path="/api/v1/client")
+@RequestMapping(path="/client")
 public class ClientController {
 	
 	@Autowired
-	private ClientRepository clientRepository;
+	private ClientService clientService;
 
 	@GetMapping("/signup")
 	public String signup(Model model){
-		return "signup";
+		return "client/signup";
 	}
 
 	@PostMapping("/submit")
 	public String formSubmit(@RequestParam String name, @RequestParam String email, @RequestParam String password, Model model){
-		Client client = new Client(name, email, password);
-		clientRepository.save(client);
-		model.addAttribute("message", "Form Submitted successfully");
-
-		return "result";
+		clientService.saveClient(name, email, password);
+		return "redirect:/client/success";
 	}
 
-	@GetMapping("/result")
+	@GetMapping("/success")
 	public String success(Model model){
-		return "result";
+		model.addAttribute("message", "Form Submitted successfully");
+		return "client/result";
 	}
 	
 }

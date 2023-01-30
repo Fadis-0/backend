@@ -1,3 +1,5 @@
-/root/Desktop/backend/src/main/java/com/backend/server/client/ClientController.java
+/root/Desktop/backend/src/main/java/com/backend/server/entities/Client.java
+/root/Desktop/backend/src/main/java/com/backend/server/controllers/ClientController.java
 /root/Desktop/backend/src/main/java/com/backend/server/ServerApplication.java
-/root/Desktop/backend/src/main/java/com/backend/server/client/Client.java
+/root/Desktop/backend/src/main/java/com/backend/server/repositories/ClientRepository.java
+/root/Desktop/backend/src/main/java/com/backend/server/services/ClientService.java
