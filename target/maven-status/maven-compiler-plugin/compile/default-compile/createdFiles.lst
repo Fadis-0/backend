@@ -1,5 +1,5 @@
-com/backend/server/repositories/ClientRepository.class
 com/backend/server/services/ClientService.class
-com/backend/server/ServerApplication.class
 com/backend/server/controllers/ClientController.class
 com/backend/server/entities/Client.class
+com/backend/server/repositories/ClientRepository.class
+com/backend/server/ServerApplication.class

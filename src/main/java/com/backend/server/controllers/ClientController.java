@@ -37,7 +37,7 @@ public class ClientController {
 	@GetMapping("/success")
 	public String success(Model model){
 		model.addAttribute("message", "Form Submitted successfully");
-		return "client/result";
+		return "client/login";
 	}
 	
 }
