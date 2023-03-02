@@ -4,6 +4,8 @@ import java.util.*;
 import java.lang.*;
 import java.time.LocalDate;
 
+import lombok.Data;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,11 +14,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 
 
-
+@Data
 @Entity
-@Table(name="client")
-public class Client {
-	// client class attributes
+@Table(name="product")
+public class Product {
+	// product class attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -24,28 +26,54 @@ public class Client {
 	@Column(name="name")
 	private String name;
 
-	@Column(name="email")
-	private String email;
+	@Column(name="manufacturer")
+	private String manufacturer;
 
-	@Column(name="password")
-	private String password;
+	@Column(name="category")
+	private String category;
+
+	@Column(name="type")
+	private String type;
+
+	@Column(name="price")
+	private Float price;
+
+	@Column(name="quantity")
+	private Integer quantity;
+
+	@Column(name="description")
+	private String description;
+
+
+	
+	public Product() {}
 
 
 	// constructor 1 (with id)
-	public Client(Long id, String name, String email, String password){
+	public Product(Long id, String name, String manufacturer, String category, String type, Float price, Integer quantity, String description){
+		this.id = id;
 		this.name = name;
-		this.email = email;
-		this.password = password;
+		this.manufacturer = manufacturer;
+		this.category = category;
+		this.type = type;
+		this.price = price;
+		this.quantity = quantity;
+		this.description = description;
 	}
 
 	// constructor 2 (without id)
-	public Client(String name, String email, String password){
+	public Product(String name, String manufacturer, String category, String type, Float price, Integer quantity, String description){
 		this.name = name;
-		this.email = email;
-		this.password = password;
+		this.manufacturer = manufacturer;
+		this.category = category;
+		this.type = type;
+		this.price = price;
+		this.quantity = quantity;
+		this.description = description;
 	}
-
-	// Getters
+	/*
+	// Getters 
+	
 	public Long getId(){
 		return id;
 	}
@@ -83,5 +111,6 @@ public class Client {
 			   ", password='" + password + '\'' +
 			   '}';
 	}
+	*/
 
-}
+} 

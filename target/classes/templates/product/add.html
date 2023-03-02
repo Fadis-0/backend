@@ -1,0 +1,171 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/css/product.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Product</title>
+	<style type="text/css">
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button{
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	</style>
+</head>
+<body>
+	<div class="navbar">
+		<div class="list">
+			<ul>
+				<li id="active"><a href="">Products</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<section>	
+		
+		<h2>Add a Product</h2>
+		<div class="container">
+			<form class="container-form" action="/product/submit" method="post">
+				<div class="name">
+					<input type="text" id="nom" name="name" placeholder="Name" required autocomplete="off" >
+					<select name="manufacturer" required>
+					    <option value="">Manufacturer</option>
+						<option value="Intel">Intel</option>
+						<option value="AMD">AMD</option>
+					</select>
+				</div>
+
+
+				<div class="specEtchoix">
+					<select name="category" required>
+					    <option value="">Category</option>
+						<option value="Hardware">Hardware</option>
+						<option value="Accessories">Accessories</option>
+					</select>
+					<select name="type" required>
+						<option value="">Type</option>
+						<option value="CPU">CPU</option>
+						<option value="GPU">GPU</option>
+					</select>
+				</div>
+
+				<div class="code">
+					<input type="number" id="code" name="price" placeholder="Price" required autocomplete="off" >
+					<input type="number" id="code" name="quantity" placeholder="Quantity" required autocomplete="off" >
+					
+				</div>
+
+				<div class="specEtchoix">
+					<div class="pic-container">
+						<input type="file" id="pic" name="picture1" autocomplete="off">
+						<div class="pic-box">
+							<div class="pic-center"></div>
+						</div>
+						<div class="pic-text">Picture 1</div>
+					</div>
+					<div class="pic-container">
+						<input type="file" id="pic" name="picture2" autocomplete="off">
+						<div class="pic-box">
+							<div class="pic-center"></div>
+						</div>
+						<div class="pic-text">Picture 2</div>
+					</div>
+				</div>
+				<textarea id="desc" rows="5" name="description" placeholder="Description"></textarea>
+				
+				<div class="submit">
+					<input type="submit" id="submit" name="add" value="Add">
+				
+				</div>
+			</form>
+		</div>
+		
+		<div class="child">
+			<div class="left">
+				<div class="view-nom">
+					<p>Nom : <span></span></p>
+				</div>
+				<div class="view-prenom">
+					<p>Prenom : <span></span></p>
+				</div>
+				<div class="view-adresse">
+					<p>Adresse : <span></span></p>
+				</div>
+				<div class="view-date">
+					<p>Date : <span></span></p>
+				</div>
+				<div class="view-code">
+					<p>Code : <span></span></p>
+				</div>
+			</div>
+			<div class="right">
+				<div class="view-specialite">
+					<p>Specialite : <span></span></p>
+				</div>
+				<div class="view-choix">
+					<p>Choix : <span></span><span>Not set</span></p>
+				</div>
+				<div class="view-email">
+					<p>Email : <span></span></p>
+				</div>
+				<div class="view-password">
+					<p>Password : <span></span></p>
+				</div>
+				<div class="view-moyenne">
+					
+				</div>
+			</div>
+
+			<div class="view-pic">
+				<div></div>
+			</div>
+				
+		</div>
+
+		<h2 id="recent">My Products</h2>
+		<div class="recent">
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Manufacturer</th>
+						<th>Category</th>
+						<th>Type</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						
+						<th colspan="3" id="action">Action</th> 
+					</tr>
+				</thead>
+					<tr th:each="product : ${products}" class="indexed">
+						<td th:text="${product.name}"></td>
+						<td th:text="${product.manufacturer}"></td>
+						<td th:text="${product.category}"></td>
+						<td th:text="${product.type}"></td>
+						<td th:text="${product.price}"></td>
+						<td th:text="${product.quantity}"></td>
+						
+
+						<td>
+							<button id="edit" onclick="edit(this)">edit
+							</button>
+						</td>
+						<td>
+							<button id="consult" onclick="view(this)">view
+							</button>
+						</td>
+						<td>
+							<button id="delete" onclick="return confirm('Vous etes Sure?')">Delete
+							</button>
+						</td>
+					</tr>
+			</table>
+		</div>
+		
+	</section>
+	
+	<script type="text/javascript" src="setup.js"></script>
+	<script type="text/javascript" src="edit.js"></script>
+	
+</body>
+</html>
