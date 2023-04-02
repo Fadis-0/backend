@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 @Controller
-@RequestMapping(path="/product")
+@RequestMapping(path="/inventory")
 public class ProductController {
 	
 	@Autowired
@@ -31,11 +31,11 @@ public class ProductController {
 		return "product/add";
 	}
 
-	@PostMapping("/submit")
+	@PostMapping("/addProduct")
 	public String formSubmit(@RequestParam String name, @RequestParam String manufacturer, @RequestParam String category, @RequestParam String type, @RequestParam Float price, @RequestParam Integer quantity, @RequestParam String description, Model model){
 		productService.saveProduct(name, manufacturer, category, type, price, quantity, description);
 		model.addAttribute("message", "Product Added Successfully");
-		return "redirect:/product/add";
+		return "redirect:/inventory/add";
 	}
 
 	

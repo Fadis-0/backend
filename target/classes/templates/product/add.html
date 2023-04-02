@@ -16,16 +16,18 @@
 	<div class="navbar">
 		<div class="list">
 			<ul>
-				<li id="active"><a href="">Products</a></li>
+				<li id="active"><a href="">Inventory</a></li>
 			</ul>
 		</div>
 	</div>
 
 	<section>	
-		
-		<h2>Add a Product</h2>
-		<div class="container">
-			<form class="container-form" action="/product/submit" method="post">
+		<h2 class="recent_box">
+			My Products
+			<button class="add" id="product">Add new +</button>
+		</h2>
+		<div class="container pro">
+			<form class="container-form" action="/inventory/addProduct" method="post">
 				<div class="name">
 					<input type="text" id="nom" name="name" placeholder="Name" required autocomplete="off" >
 					<select name="manufacturer" required>
@@ -79,50 +81,6 @@
 				</div>
 			</form>
 		</div>
-		
-		<div class="child">
-			<div class="left">
-				<div class="view-nom">
-					<p>Nom : <span></span></p>
-				</div>
-				<div class="view-prenom">
-					<p>Prenom : <span></span></p>
-				</div>
-				<div class="view-adresse">
-					<p>Adresse : <span></span></p>
-				</div>
-				<div class="view-date">
-					<p>Date : <span></span></p>
-				</div>
-				<div class="view-code">
-					<p>Code : <span></span></p>
-				</div>
-			</div>
-			<div class="right">
-				<div class="view-specialite">
-					<p>Specialite : <span></span></p>
-				</div>
-				<div class="view-choix">
-					<p>Choix : <span></span><span>Not set</span></p>
-				</div>
-				<div class="view-email">
-					<p>Email : <span></span></p>
-				</div>
-				<div class="view-password">
-					<p>Password : <span></span></p>
-				</div>
-				<div class="view-moyenne">
-					
-				</div>
-			</div>
-
-			<div class="view-pic">
-				<div></div>
-			</div>
-				
-		</div>
-
-		<h2 id="recent">My Products</h2>
 		<div class="recent">
 			<table>
 				<thead>
@@ -162,10 +120,64 @@
 			</table>
 		</div>
 		
+		<h2 class="recent_box box2">
+			My Categories
+			<button class="add" id="category">Add new +</button>
+		</h2>
+		<div class="container cat">
+			<form class="container-form" action="/inventory/addCategory" method="post">
+				<div class="name">
+					<input type="text" id="nom" name="name" placeholder="Name" required autocomplete="off" >
+					<div class="pic-container">
+						<input type="file" id="pic" name="picture1" autocomplete="off">
+						<div class="pic-box">
+							<div class="pic-center"></div>
+						</div>
+						<div class="pic-text">Picture</div>
+					</div>
+				</div>
+
+				<div class="submit">
+					<input type="submit" id="submit" name="add" value="Add">
+				
+				</div>
+			</form>
+		</div>
+		<div class="recent">
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						
+						
+						<th colspan="3" id="action">Action</th> 
+					</tr>
+				</thead>
+					<tr th:each="category : ${categories}" class="indexed">
+						<td th:text="${category.name}"></td>
+						
+						<td>
+							<button id="edit" onclick="edit(this)">edit
+							</button>
+						</td>
+						<td>
+							<button id="consult" onclick="view(this)">view
+							</button>
+						</td>
+						<td>
+							<button id="delete" onclick="return confirm('Vous etes Sure?')">Delete
+							</button>
+						</td>
+					</tr>
+			</table>
+		</div>
+		
 	</section>
+
+
 	
-	<script type="text/javascript" src="setup.js"></script>
-	<script type="text/javascript" src="edit.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="/javascript/script.js"></script>
 	
 </body>
 </html>
